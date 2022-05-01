@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-app
+spec:
+  selector:
+    matchLabels:
+      app: python-app
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: python-app
+    spec:
+      containers:
+      - name: python-app
+        image: garima1998/python_app:v1
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 7000
+        resources:
+          requests:
+            cpu: 100m
